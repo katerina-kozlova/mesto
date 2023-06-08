@@ -111,7 +111,11 @@
 .button {
   background: transparent;
   border: 0;
-} 
+}
+
+.button:hover {
+  cursor: url(images/coursor.svg), pointer;
+}
 
 .profile__title {
   font-family: 'Inter';
@@ -141,6 +145,10 @@
   border-radius: 2px;
 }
 
+.profile__button:hover {
+  opacity: 0.6;
+}
+
 .profile__button_place-info {
   border: 1px solid #FFFFFF;
   width: 24px;
@@ -148,12 +156,16 @@
   padding: 0;
 }
 
+.profile__button_place-info:hover {
+  opacity: 0.6;
+}
+
 .elements {
   max-width: 880px;
   margin: 0 auto 67px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 914px) {
   .elements {
     max-width: calc(100vw - 38px);
     margin: 0 auto 48px;
@@ -162,17 +174,34 @@
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(3, 282px);
-  grid-template-rows: repeat(2, 361px);
+  grid-template-columns: fit-content(282px) fit-content(282px) fit-content(282px);
+  grid-template-rows: repeat(2, fit-content);
   column-gap: 17px;
   row-gap: 20px;
   justify-content: center;
+  padding: 0;
+  margin: 0;
 }
+/*
+@media screen and (max-width: 914px) {
+  .cards {
+    grid-template-columns: fit-content(282px) fit-content(282px);
+    grid-template-rows: fit-content(361px) fit-content(361px) fit-content(361px);
+  }
+}
+
+@media screen and (max-width: 614px) {
+  .cards {
+    grid-template-columns: fit-content(282px);
+    grid-template-rows: fit-content(361px) fit-content(361px) fit-content(361px) fit-content(361px) fit-content(361px) fit-content(361px);
+  }
+}
+*/
 
 .cards__image {
   max-width: 100%;
-  background-size: cover;
-  background-position: center;
+  border-radius: 10px 10px 0px 0px;
+ 
 }
 
 .cards__title {
@@ -188,6 +217,7 @@
 .cards__element {
   background-color: #FFFFFF;
   border-radius: 10px;
+  list-style-type: none;
 }
 
 .cards__group {
@@ -195,4 +225,24 @@
   flex-direction: row;
   margin: 25px 15px 31px 21px;
   justify-content: space-between;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.cards__like {
+  background-image: url(images/like_disabled.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 22px;
+}
+
+.cards__like:hover {
+  opacity: 0.5;
+}
+
+.cards__like:active {
+  background-image: url(images/like_active.svg);
+  opacity: 1;
 }
