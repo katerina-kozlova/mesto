@@ -1,4 +1,4 @@
-.cards__like {
+.button__like {
     background-image: url(../../../images/like_disabled.svg);
     background-size: contain;
     background-position: center;
@@ -6,11 +6,11 @@
     width: 22px;
   }
   
-  .cards__like:hover {
+  .button__like:hover {
     opacity: 0.5;
   }
   
-  .cards__like:active {
+  .button__like:active {
     background-image: url(../../../images/like_active.svg);
     opacity: 1;
   }

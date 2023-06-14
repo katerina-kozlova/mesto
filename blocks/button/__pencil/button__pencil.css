@@ -1,4 +1,4 @@
-.profile__button_pencil {
+.button__pencil {
     border: 1px solid #FFFFFF;
     width: 24px;
     height: 24px;
@@ -6,12 +6,12 @@
   }
   
   @media screen and (max-width: 330px) {
-    .profile__button_pencil {
+    .button__pencil {
       width: 18px;
       height: 18px;
     }
   }
   
-  .profile__button_pencil:hover {
+  .button__pencil:hover {
     opacity: 0.6;
   }
