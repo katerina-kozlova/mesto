@@ -1,4 +1,4 @@
-.profile__button_place-info {
+.profile__button_info {
     border: 1px solid #FFFFFF;
     width: 24px;
     height: 24px;
@@ -6,12 +6,12 @@
   }
   
   @media screen and (max-width: 330px) {
-    .profile__button_place-info {
+    .profile__button_info {
       width: 18px;
       height: 18px;
     }
   }
   
-  .profile__button_place-info:hover {
+  .profile__button_info:hover {
     opacity: 0.6;
   }

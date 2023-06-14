@@ -1,11 +1,11 @@
-.profile__info_position-top {
+.profile__info_top {
     display: flex;
     flex-direction: row;
     align-items: center;
   }
   
   @media screen and (max-width: 330px) {
-    .profile__info_position-top {
+    .profile__info_top {
       margin-top: 26px;
     }
   }
