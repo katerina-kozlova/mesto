@@ -9,7 +9,7 @@
     font-size: 18px;
     line-height: 22px;
     text-align: center;
-    color: #FFFFFF
+    color: #FFFFFF;
   }
 
   @media screen and (max-width: 412px) {
@@ -20,7 +20,6 @@
   }
 }
     
-  
   .popup__save-button:hover {
     opacity: 0.8;
   }
