@@ -1,0 +1,25 @@
+.cards__element {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    list-style-type: none;
+    max-width: 32.05%;
+    margin: 0 0 20px;
+  }
+
+  @media screen and (max-width: 620px) {
+    .cards__element {
+      max-width: calc(100vw - 338px);
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    .cards__element {
+      max-width: calc(100vw - 138px);
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .cards__element {
+      max-width: calc(100vw - 38px);
+    }
+  }
