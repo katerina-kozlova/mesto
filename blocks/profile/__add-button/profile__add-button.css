@@ -1,4 +1,4 @@
-.button__plus {
+.profile__add-button {
     width: 150px;
     height: 50px;
     padding: 0;
@@ -7,11 +7,11 @@
   }
   
   @media screen and (max-width: 680px) {
-    .button__plus {
+    .profile__add-button {
       width: calc(100vw - 38px);
     }
   }
 
-  .button__plus:hover {
+  .profile__add-button:hover {
     opacity: 0.6;
   }

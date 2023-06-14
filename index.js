@@ -1,4 +1,4 @@
-const aboutButtonElement = document.querySelector('.profile__button_place-info'); 
+const aboutButtonElement = document.querySelector('.profile__correct-button'); 
 // Обозначаем переменную и ищем по классу кнопку редактирования профиля
 const closeButtonElement = document.querySelector('.popup__close-button');
 const saveButtonElement = document.querySelector('.popup__save-button');
