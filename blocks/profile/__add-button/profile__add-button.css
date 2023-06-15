@@ -4,6 +4,10 @@
     padding: 0;
     border: 2px solid #FFFFFF;
     border-radius: 2px;
+    background-image: url(../../../images/add.svg);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
   }
   
   @media screen and (max-width: 680px) {
