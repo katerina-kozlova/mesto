@@ -13,6 +13,9 @@ let profileDescription = document.querySelector(".profile__description");
 function openPopup() {
     popupElement.classList.add("popup_opened");
     // Создали функцию открытия попапа: имя + ее действие: класс + метод, который добавляет или убирает класс
+    nameInput.value = profileName.textContent;
+    jobInput.value = profileDescription.textContent;
+    // При открытии попапа данные из профиля вставляются в форму
 }
 
 function closePopup() {
