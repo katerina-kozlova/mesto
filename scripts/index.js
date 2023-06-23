@@ -1,28 +1,48 @@
-const aboutButtonElement = document.querySelector(".profile__correct-button");
-// Обозначаем переменную и ищем по классу кнопку редактирования профиля
-const closeButtonElement = document.querySelector(".popup__close-button");
-const popupElement = document.querySelector(".popup");
-// Находим форму в DOM
-let formElement = document.querySelector(".popup__form"); // Воспользуйтесь методом querySelector()
-// Находим поля формы в DOM
-let nameInput = formElement.querySelector("#name"); // Воспользуйтесь инструментом .querySelector()
-let jobInput = formElement.querySelector("#description"); // Воспользуйтесь инструментом .querySelector()
+const openPopupButtons = document.querySelectorAll(".button__open"); // Кнопка открытия попапа в DOM
+const closePopupButtons = document.querySelectorAll(".popup__close-button"); // Кнопка закрытия попапа в DOM
+const savePopupButtons = document.querySelectorAll(".popup__save-button"); // Кнопка сохранения информации в DOM
+const popupsElement = document.querySelectorAll(".popup"); // Попапы в DOM
+let formElement = document.querySelector(".popup__form"); // Находим форму в DOM
+// Находим поля формы редактирования в DOM:
+let nameInput = formElement.querySelector("#name");
+let jobInput = formElement.querySelector("#description");
 let profileName = document.querySelector(".profile__name");
 let profileDescription = document.querySelector(".profile__description");
+// Находим поля формы добавления в DOM:
+let titleInput = formElement.querySelector("#title");
+let linkInput = formElement.querySelector("#link");
+let cardsTitle = document.querySelector(".cards__title");
+let cardsImage = document.querySelector(".cards__image");
 
+// Функция, которая открывает необходимый попап в зависимости от того, на какую кнопку пользоваться кликнул
 function openPopup() {
-    popupElement.classList.add("popup_opened");
-    // Создали функцию открытия попапа: имя + ее действие: класс + метод, который добавляет или убирает класс
+    let index = Array.from(openPopupButtons).indexOf(this);
+    popupsElement[index].classList.add("popup_opened");
     nameInput.value = profileName.textContent;
     jobInput.value = profileDescription.textContent;
-    // При открытии попапа данные из профиля вставляются в форму
 }
+// Перебираем из массива кнопки открытия попапа и подключаем функцию, описанную выше
+openPopupButtons.forEach((button) => {
+    button.addEventListener('click', openPopup);
+    })
 
 function closePopup() {
-    popupElement.classList.remove("popup_opened");
+    let index = Array.from(closePopupButtons).indexOf(this);
+    popupsElement[index].classList.remove("popup_opened");
 }
+closePopupButtons.forEach((button) => {
+    button.addEventListener('click', closePopup);
+    })
 
-// Обработчик «отправки» формы, хотя пока
+function savePopup() {
+    let index = Array.from(savePopupButtons).indexOf(this);
+    popupsElement[index].classList.remove("popup_opened");
+}
+savePopupButtons.forEach((button) => {
+    button.addEventListener('click', savePopup);
+    })
+
+// Обработчик «отправки» формы редактирования профиля
 function handleFormSubmit(evt) {
     evt.preventDefault();
     // Эта строчка отменяет стандартную отправку формы.
@@ -35,14 +55,15 @@ function handleFormSubmit(evt) {
     closePopup();
 }
 
-aboutButtonElement.addEventListener("click", openPopup);
-// имя переменной + способ зарегистрировать обработчик события,
-// в скобках значение: по какому действию и какая функция выполняется
-// Создали функцию и вызвали ее по клику. Теперь по нажатию кнопки "редакировать профиль" открывается окно/попап
-
-closeButtonElement.addEventListener("click", closePopup);
-// Теперь по нажатию на крестик попап закрывается
+// Обработчик «отправки» формы сохдания карточки
+//function handleFormSubmit(evt) {
+    //evt.preventDefault();
+    //cardsTitle.textContent = titleInput.value;
+    //cardsImage.textContent = linkInput.value;
+    //closePopup();
+//}
 
 formElement.addEventListener("submit", handleFormSubmit);
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
+
