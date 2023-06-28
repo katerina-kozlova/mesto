@@ -131,6 +131,10 @@ function addCard(linkValue, titleValue) {
   cardContainer.prepend(imageElement, divElement);
   divElement.prepend(titleElement);
   divElement.appendChild(likeButtonElement);
+
+  likeButtonElement.addEventListener('click', function (evt) {
+    evt.target.classList.toggle('cards__like_active');
+  }); 
 }
 
 function handleCardSubmit(evt) {
@@ -147,3 +151,15 @@ function handleCardSubmit(evt) {
 }
 
 formElement2.addEventListener('submit', handleCardSubmit);
+
+
+// ЛАЙК ЛАЙК ЛАЙК ЛАЙК ЛАЙК ЛАЙК ЛАЙК ЛАЙК ЛАЙК ЛАЙК ЛАЙК ЛАЙК ЛАЙК ЛАЙК
+const likeButton = document.querySelectorAll(".cards__like");
+
+function likeCard() {
+  let index = Array.from(likeButton).indexOf(this);
+  likeButton[index].classList.toggle("cards__like_active");
+}
+likeButton.forEach((button) => {
+  button.addEventListener('click', likeCard);
+  })
