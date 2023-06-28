@@ -2,17 +2,65 @@ const openPopupButtons = document.querySelectorAll(".button__open"); // Кноп
 const closePopupButtons = document.querySelectorAll(".popup__close-button"); // Кнопка закрытия попапа в DOM
 const savePopupButtons = document.querySelectorAll(".popup__save-button"); // Кнопка сохранения информации в DOM
 const popupsElement = document.querySelectorAll(".popup"); // Попапы в DOM
-let formElement = document.querySelector(".popup__form"); // Находим форму в DOM
+const formElement1 = document.querySelector(".popup__form-1"); // Находим форму в DOM
+const popupProfile = document.querySelector("#popup-profile");
+const popupCard = document.querySelector("#popup-card");
+
+console.log(savePopupButtons);
+
 // Находим поля формы редактирования в DOM:
-let nameInput = formElement.querySelector("#name");
-let jobInput = formElement.querySelector("#description");
+let nameInput = formElement1.querySelector("#name");
+let jobInput = formElement1.querySelector("#description");
 let profileName = document.querySelector(".profile__name");
 let profileDescription = document.querySelector(".profile__description");
-// Находим поля формы добавления в DOM:
-let titleInput = formElement.querySelector("#title");
-let linkInput = formElement.querySelector("#link");
-let cardsTitle = document.querySelector(".cards__title");
-let cardsImage = document.querySelector(".cards__image");
+
+function openPopup() {
+  let index = Array.from(openPopupButtons).indexOf(this);
+  popupsElement[index].classList.add("popup_opened");
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileDescription.textContent;
+}
+// Перебираем из массива кнопки открытия попапа и подключаем функцию, описанную выше
+openPopupButtons.forEach((button) => {
+  button.addEventListener('click', openPopup);
+})
+
+function closePopup() {
+  let index = Array.from(closePopupButtons).indexOf(this);
+  popupsElement[index].classList.remove("popup_opened");
+}
+closePopupButtons.forEach((button) => {
+  button.addEventListener('click', closePopup);
+  })
+
+  // Функция, которая открывает необходимый попап в зависимости от того, на какую кнопку пользоваться кликнул
+
+function savePopup(popupProfile, popupCard) {
+  let index = Array.from(savePopupButtons).indexOf(this);
+  popupsElement[index].classList.remove("popup_opened");
+}
+savePopupButtons.forEach((button) => {
+  button.addEventListener('click', savePopup);
+  })
+
+// Обработчик «отправки» формы редактирования профиля
+function handleFormSubmit(evt) {
+  evt.preventDefault();
+  // Эта строчка отменяет стандартную отправку формы.
+  // Так мы можем определить свою логику отправки.
+  profileName.textContent = nameInput.value;
+  profileDescription.textContent = jobInput.value;
+  // Получаем значение полей jobInput и nameInput из свойства value,
+  // Выберираем элементы, куда должны быть вставлены значения полей
+  // Вставляем новые значения с помощью textContent
+  savePopup(popupProfile);
+}
+
+formElement1.addEventListener("submit", handleFormSubmit);
+// Прикрепляем обработчик к форме:
+// он будет следить за событием “submit” - «отправка»
+
+
 
 const initialCards = [
   {
@@ -41,87 +89,61 @@ const initialCards = [
   }
 ];
 
-const templateElement = document.querySelector('.card-template');
-const cardsContainer = document.querySelector('.cards');
+// Находим эелементы на страницк
+const formElement2 = document.querySelector(".popup__form-2");
+const initialCardsList = document.querySelector('.cards'); //ul 
+const initialCardsTemplate = document.querySelector('.card-template').content; //template 
+let titleInput = formElement2.querySelector("#title");
+let linkInput = formElement2.querySelector("#link");
+let cardName = document.querySelector('.cards__title');
+let cardImage = document.querySelector('.cards__image');
+const addPopupButtons = document.querySelectorAll(".popup__add-button");
 
-const createCard = ({ name, link }) => {
-  const clone = templateElement.content.cloneNode(true);
-  const cardsElement = clone.querySelector('.cards__element'); // Клонируем содержимое шаблона, чтобы добавить новую карточку
-  cardsElement.querySelector('.cards__image').src = link;
-  cardsElement.querySelector('.cards__title').textContent = name;
-  return cardsElement;
-}
-
-
-initialCards.forEach((item) => {
-  const cardElement = createCard(item);
-  cardsContainer.append(cardElement(item));
+initialCards.forEach(function (element) {
+  let initialCardsElement = initialCardsTemplate.cloneNode(true); // дубликат узла
+  initialCardsElement.querySelector('.cards__title').textContent = element.name;
+  initialCardsElement.querySelector('.cards__image').src = element.link;
+  initialCardsList.append(initialCardsElement)
 });
 
-// Обработчик «отправки» формы редактирования профиля
-function handleFormSubmit(evt) {
-  evt.preventDefault();
-  const name = titleInput.value;
-  const link = linkInput.value;
-  const cardHtml = createCard({ name, link });
-  cardsContainer.insertAdjacentHTML('beforeend', cardHtml);
-  closePopup();
+function addCard(linkValue, titleValue) {
+  const cardContainer = document.createElement('li');
+  cardContainer.classList.add('cards__element');
+
+  const imageElement = document.createElement('img');
+  imageElement.classList.add('cards__image');
+  imageElement.src = linkValue;
+
+  const divElement = document.createElement('div');
+  divElement.classList.add('cards__group');
+
+  const titleElement = document.createElement('h2');
+  titleElement.classList.add('cards__title');
+  titleElement.textContent = titleValue;
+  divElement.prepend(titleElement);
+
+  const likeButtonElement = document.createElement('button');
+  likeButtonElement.classList.add('cards__like', 'button');
+  divElement.appendChild(likeButtonElement);
+
+  initialCardsList.prepend(cardContainer);
+
+  cardContainer.prepend(imageElement, divElement);
+  divElement.prepend(titleElement);
+  divElement.appendChild(likeButtonElement);
 }
 
+function handleCardSubmit(evt) {
+  evt.preventDefault();
+  const src = document.querySelector("#link");
+  const title = document.querySelector("#title");
 
-formElement.addEventListener("submit", handleFormSubmit);
-
-//const cardsTemplate = document.querySelector('#cards-template').content; // Находим тег temlate для карточки в DOM и обращаемся к его свойству через content
-//const cardsElement = cardsTemplate.querySelector('.cards__element').cloneNode(true); // Клонируем содержимое шаблона, чтобы добавить новую карточку
-//const container = document.querySelector('.elements');
-//initialCards.forEach((place) => {
+  addCard(src.value, title.value);
   
-  //cardsElement.querySelector('.cards__image').src = place.link;
-  //cardsElement.querySelector('.cards__title').textContent = place.name;
-  //container.append(cardsElement);
-//});
+  src.value = '';
+  title.value = '';
 
-// Функция, которая открывает необходимый попап в зависимости от того, на какую кнопку пользоваться кликнул
-function openPopup() {
-  let index = Array.from(openPopupButtons).indexOf(this);
-  popupsElement[index].classList.add("popup_opened");
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileDescription.textContent;
-}
-// Перебираем из массива кнопки открытия попапа и подключаем функцию, описанную выше
-openPopupButtons.forEach((button) => {
-  button.addEventListener('click', openPopup);
-  })
-
-function closePopup() {
-  let index = Array.from(closePopupButtons).indexOf(this);
-  popupsElement[index].classList.remove("popup_opened");
-}
-closePopupButtons.forEach((button) => {
-  button.addEventListener('click', closePopup);
-  })
-
-function savePopup() {
-  let index = Array.from(savePopupButtons).indexOf(this);
-  popupsElement[index].classList.remove("popup_opened");
-}
-savePopupButtons.forEach((button) => {
-  button.addEventListener('click', savePopup);
-  })
-
-// Обработчик «отправки» формы редактирования профиля
-function handleFormSubmit(evt) {
-  evt.preventDefault();
-  // Эта строчка отменяет стандартную отправку формы.
-  // Так мы можем определить свою логику отправки.
-  profileName.textContent = nameInput.value;
-  profileDescription.textContent = jobInput.value;
-  // Получаем значение полей jobInput и nameInput из свойства value,
-  // Выберираем элементы, куда должны быть вставлены значения полей
-  // Вставляем новые значения с помощью textContent
-  closePopup();
+  savePopup(popupCard);
 }
 
-formElement.addEventListener("submit", handleFormSubmit);
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
+formElement2.addEventListener('submit', handleCardSubmit);
