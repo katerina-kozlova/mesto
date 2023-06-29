@@ -114,6 +114,9 @@ function addCard(linkValue, titleValue) {
   imageElement.classList.add('cards__image');
   imageElement.src = linkValue;
 
+  const deleteButtonElement = document.createElement('button');
+  deleteButtonElement.classList.add('cards__delete', 'button');
+
   const divElement = document.createElement('div');
   divElement.classList.add('cards__group');
 
@@ -128,13 +131,17 @@ function addCard(linkValue, titleValue) {
 
   initialCardsList.prepend(cardContainer);
 
-  cardContainer.prepend(imageElement, divElement);
+  cardContainer.prepend(imageElement, deleteButtonElement, divElement);
   divElement.prepend(titleElement);
   divElement.appendChild(likeButtonElement);
 
   likeButtonElement.addEventListener('click', function (evt) {
     evt.target.classList.toggle('cards__like_active');
   }); 
+
+  deleteButtonElement.addEventListener('click', function (evt) {
+    evt.target.parentElement.remove();
+  });
 }
 
 function handleCardSubmit(evt) {
@@ -162,4 +169,16 @@ function likeCard() {
 }
 likeButton.forEach((button) => {
   button.addEventListener('click', likeCard);
+  })
+
+// УДАЛЕНИЕ   УДАЛЕНИЕ  УДАЛЕНИЕ  УДАЛЕНИЕ  УДАЛЕНИЕ 
+const deleteButton = document.querySelectorAll(".cards__delete");
+
+function deleteCard() {
+  let index = Array.from(deleteButton).indexOf(this);
+  deleteButton[index].parentElement.remove();
+}
+
+deleteButton.forEach((button) => {
+  button.addEventListener('click', deleteCard);
   })
