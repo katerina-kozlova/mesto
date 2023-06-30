@@ -31,59 +31,12 @@
 
                     </ul>
                 </section>
-
-               <!-- <section class="elements">
-                    <ul class="cards">
-                        <li class="cards__element">
-                            <img src="images/altay.jpg" alt="Алтай" class="cards__image" />
-                            <div class="cards__group">
-                                <h2 class="cards__title">Алтай</h2>
-                                <button aria-label="поставить лайк" type="button" class="button cards__like"></button>
-                            </div>
-                        </li>
-                        <li class="cards__element">
-                            <img src="images/altay2.jpg" alt="Алтай" class="cards__image" />
-                            <div class="cards__group">
-                                <h2 class="cards__title">Алтай</h2>
-                                <button aria-label="поставить лайк" type="button" class="button cards__like"></button>
-                            </div>
-                        </li>
-                        <li class="cards__element">
-                            <img src="images/riza.jpg" alt="Рица" class="cards__image" />
-                            <div class="cards__group">
-                                <h2 class="cards__title">Озеро Рица</h2>
-                                <button aria-label="поставить лайк" type="button" class="button cards__like"></button>
-                            </div>
-                        </li>
-                        <li class="cards__element">
-                            <img src="images/siam.jpg" alt="Сиамский залив" class="cards__image" />
-                            <div class="cards__group">
-                                <h2 class="cards__title">Сиамский залив</h2>
-                                <button aria-label="поставить лайк" type="button" class="button cards__like"></button>
-                            </div>
-                        </li>
-                        <li class="cards__element">
-                            <img src="images/chornoye.jpg" alt="Чёрное море" class="cards__image" />
-                            <div class="cards__group">
-                                <h2 class="cards__title">Чёрное море</h2>
-                                <button aria-label="поставить лайк" type="button" class="button cards__like"></button>
-                            </div>
-                        </li>
-                        <li class="cards__element">
-                            <img src="images/yupshara.jpg" alt="Река Юпшара" class="cards__image" />
-                            <div class="cards__group">
-                                <h2 class="cards__title">Река Юпшара</h2>
-                                <button aria-label="поставить лайк" type="button" class="button cards__like"></button>
-                            </div>
-                        </li>
-                    </ul>
-                </section>-->
             </main>
 
             <template class="card-template">
                     <li id="cards__element" class="cards__element">
                         <button aria-label="удалить карточку" type="button" class="button cards__delete"></button>
-                        <img class="cards__image">
+                        <img class="cards__image" alt="" src="#">
                         <div class="cards__group">
                             <h2 class="cards__title"></h2>
                             <button aria-label="поставить лайк" type="button" class="button cards__like"></button>
@@ -110,9 +63,15 @@
                     <form class="popup__form-2">
                         <input type="text" name="title" id="title" class="popup__input" required placeholder="Название" />
                         <input type="url" name="link" id="link" class="popup__input" required placeholder="Ссылка на картинку" />
-                        <button type="submit" class="button popup__save-button">Создать</button>
+                        <button type="submit" class="button popup__add-button">Создать</button>
                     </form>
                 </div>
+            </div>
+
+            <div id="popup-description" class="popup">
+                <button aria-label="закрыть окно" type="button" class="button popup__close-button"></button>
+                <img class="popup__image" src="#">
+                <p class="popup__caption" id="caption"></p>
             </div>
 
             <footer class="footer">
