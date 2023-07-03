@@ -18,12 +18,12 @@
                         <div class="profile__info">
                             <div class="profile__top">
                                 <h1 class="profile__name">Катерина Козлова</h1>
-                                <button aria-label="редактировать" type="button" class="button profile__correct-button"></button>
+                                <button aria-label="редактировать" type="button" id="open-button" class="button profile__correct-button"></button>
                             </div>
                             <p class="profile__description">Путешественник</p>
                         </div>
                     </div>
-                    <button aria-label="добавить" type="button" class="button profile__add-button"></button>
+                    <button aria-label="добавить" type="button" id="open-button" class="button profile__add-button"></button>
                 </section>
 
                 <section class="elements">
@@ -34,7 +34,7 @@
             <template class="card-template">
                 <li id="cards__element" class="cards__element">
                     <button aria-label="удалить карточку" type="button" class="button cards__delete"></button>
-                    <img class="cards__image" alt="" src="#" />
+                    <img id="open-button" class="cards__image" alt="" src="#" />
                     <div class="cards__group">
                         <h2 class="cards__title"></h2>
                         <button aria-label="поставить лайк" type="button" class="button cards__like"></button>
@@ -44,30 +44,30 @@
 
             <div id="popup-profile" class="popup">
                 <div class="popup__container">
-                    <button aria-label="закрыть окно" type="button" class="button popup__close-button"></button>
+                    <button aria-label="закрыть окно" type="button" id="close-button-profile" class="button popup__close-button"></button>
                     <h2 class="popup__title">Редактировать профиль</h2>
-                    <form class="popup__form-1">
+                    <form id="popup-form-edit" class="popup__form">
                         <input type="text" name="name" id="name" class="popup__input" required placeholder="Ваше имя" />
                         <input type="text" name="description" id="description" class="popup__input" required placeholder="О себе" />
-                        <button type="submit" class="button popup__save-button">Сохранить</button>
+                        <button type="submit" id="save-button" class="button popup__save-button">Сохранить</button>
                     </form>
                 </div>
             </div>
 
             <div id="popup-card" class="popup">
                 <div class="popup__container ">
-                    <button aria-label="закрыть окно" type="button" class="button popup__close-button"></button>
+                    <button aria-label="закрыть окно" type="button" id="close-button-card" class="button popup__close-button"></button>
                     <h2 class="popup__title">Новое место</h2>
-                    <form class="popup__form-2">
+                    <form id="popup-form-add" class="popup__form">
                         <input type="text" name="title" id="title" class="popup__input" required placeholder="Название" />
                         <input type="url" name="link" id="link" class="popup__input" required placeholder="Ссылка на картинку" />
-                        <button type="submit" class="button popup__add-button">Создать</button>
+                        <button type="submit" id="add-button" class="button popup__save-button">Создать</button>
                     </form>
                 </div>
             </div>
 
-            <div id="popup-description" class="popup popup_description">
-                <button aria-label="закрыть окно" type="button" class="button popup__close-button"></button>
+            <div id="popup-description" class="popup popup_theme_dark">
+                <button aria-label="закрыть окно" type="button" id="close-button-image" class="button popup__close-button"></button>
                 <img class="popup__image" alt="" src="#" />
                 <p class="popup__caption" id="caption"></p>
             </div>
@@ -76,6 +76,7 @@
                 <p class="footer__copyright">© 2023 Mesto Russia</p>
             </footer>
         </div>
+        <script src="scripts/cards.js"></script>
         <script src="scripts/index.js"></script>
     </body>
 </html>

@@ -1,4 +1,4 @@
-.popup__description::after {
+.popup_theme_dark::after {
     content: "";
     background-color: rgba(0, 0, 0, 0.9);
     width: 100vw;
