@@ -1,7 +1,7 @@
 // П Е Р Е М Е Н Н Ы Е (общее)
 const closePopupButtons = document.querySelectorAll(".popup__close-button"); // Кнопки закрытия попапа
 const popupsElement = document.querySelectorAll(".popup"); // Все попапы
-const openPopupButtons = document.querySelectorAll("#open-button"); // Все кнопки открытия попапа
+const openPopupButtons = document.querySelectorAll(".button_type_open"); // Все кнопки открытия попапа
 // П Е Р Е М Е Н Н Ы Е (редактирования профиля)
 const openButtonProfile = document.querySelector(".profile__correct-button"); // Кнопка редактирования профиля
 const closeButtonProfile = document.querySelector("#close-button-profile"); // Кнопка закрытия редактирования профиля
